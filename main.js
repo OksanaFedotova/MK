@@ -122,6 +122,11 @@ function createReloadButton() {
     
 };
 
+function updateHP (player, val) {
+    player.changeHP(val);
+    player.renderHP();
+}
+
 $formFight.addEventListener('submit', (e) => {
     e.preventDefault();
     const enemy = enemyAttack();
@@ -139,12 +144,10 @@ $formFight.addEventListener('submit', (e) => {
         item.checked = false;
     }
     if (enemy.defence !== attack.hit) {
-        player1.changeHP(attack.value);
-        player1.renderHP();
+        updateHP(player1, attack.value)
     };
     if (attack.defence !== enemy.hit) {
-        player2.changeHP(attack.value);
-        player2.renderHP();
+        updateHP(player2, enemy.value);
     };
     
     if (player1.hp === 0 || player2.hp === 0) {
