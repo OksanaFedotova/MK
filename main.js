@@ -1,11 +1,16 @@
+import Game from './Game.js'
+
+const game = new Game();
+game.start();
+/*
 import { createElement, getRandom } from './utils.js';
-import { player1, player2, updateHP } from './players.js';
-import { $formFight, enemyAttack, playerAttack } from './attacks.js'
+import { player1, player2 } from './players.js';
+import { $formFight, enemyAttack, playerAttack } from './attacks.js';
+
 
 const $arenas = document.querySelector('.arenas');
 
 const $chat = document.querySelector('.chat');
-
 
 const logs = {
     start: 'Часы показывали [time], когда [player1] и [player2] бросили вызов друг другу.',
@@ -47,41 +52,10 @@ const logs = {
     draw: 'Ничья - это тоже победа!'
 };
 
+player1.createPlayer();
+player2.createPlayer();
 
-function createPlayer(playerData) {
 
-    const $player = createElement('div', `player${playerData.player}`);
-    const $progressbar = createElement('div', 'progressbar');
-    const $character = createElement('div', 'character');
-    const $life =  createElement('div', 'life');
-    const $name =  createElement('div', 'name');
-    const $img = document.createElement('img');
-
-    $life.style.width = playerData.hp + '%';
-    $name.innerText = playerData.name;
-    $img.src = playerData.img;
-
-    $player.appendChild($progressbar);
-    $player.appendChild($character);
-    $progressbar.appendChild($life);
-    $progressbar.appendChild($name);
-    $character.appendChild($img);
-    $arenas.appendChild($player);
-
-    return $player;
-};
-
-const $player1 = createPlayer(player1);
-const $player2 = createPlayer(player2);
-
-const playerWins = (name) => {
-    const $winTitle = createElement('div', 'loseTitle');
-    $winTitle.innerText = name + ' wins!';
-    if(!name) {
-        $winTitle.innerText = 'draw!'
-    }
-    return $winTitle;
-};
 
 function createReloadButton() {
     const $reloadWrap = createElement('div', 'reloadWrap');
@@ -134,7 +108,8 @@ function generateLogs(type, player1, player2, damage, rest) {
                 el = `<p>${logs[type]}</p>`;
                 break;
             default: 
-            el = `<p>Происходит что-то непонятное</p>`
+            el = `<p>Происходит что-то непонятное</p>`;
+            break;
         };
    
     $chat.insertAdjacentHTML('afterbegin', el);
@@ -154,13 +129,15 @@ $formFight.addEventListener('submit', (e) => {
     };
     
     if (enemyDefence !== hit) {
-        updateHP(player2, value);
+        player2.changeHP(value);
+        player2.renderHP();
         generateLogs('hit', player1, player2, value, player2.hp);
     } else {
         generateLogs('defence', player2, player1, value, player2.hp);
     }
     if (defence !== enemyHit) {
-        updateHP(player1, enemyValue);
+        player1.changeHP(enemyValue);
+        player1.renderHP();
         generateLogs('hit', player2, player1, enemyValue, player1.hp);
     } else {
         generateLogs('defence', player1, player2, enemyValue, player1.hp);
@@ -179,6 +156,4 @@ $formFight.addEventListener('submit', (e) => {
         $arenas.appendChild(playerWins(player1.name));
     };
 });
-
-
- 
+*/
