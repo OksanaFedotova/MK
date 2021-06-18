@@ -5,8 +5,9 @@ import { enemyAttack, playerAttack } from './attacks.js';
 
 class Game {
 
-    constructor() {
+    constructor(arenaSelector) {
         this.$arenas = document.querySelector('.arenas');
+        this.$arenas.classList.add(`arena${arenaSelector}`);
         this.$formFight = document.querySelector('.control');
         this.$chat = document.querySelector('.chat');
     }
