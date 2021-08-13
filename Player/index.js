@@ -13,10 +13,10 @@ class Player {
         const $playerLife = document.querySelector(`.${this.selector} .life`);
         return $playerLife;
     }
-    changeHP = (damage) => {
-        return this.hp > 0? this.hp -= damage: this.hp = 0;
-    }
+    changeHP = (damage) => this.hp > 0? this.hp -= damage: this.hp = 0;
+
     renderHP = () => {
+
         this.elHP().style.width = this.hp + '%';
     }
 
@@ -29,7 +29,7 @@ class Player {
         const $name =  createElement('div', 'name');
         const $img = document.createElement('img');
     
-        $life.style.width = this.selectorhp + '%';
+        $life.style.width = this.hp + '%';
         $name.innerText = this.name;
         $img.src = this.img;
     
